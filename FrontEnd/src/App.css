@@ -1,0 +1,267 @@
+@import url(https://db.onlinewebfonts.com/c/105007d99d9df64c50cc24d696d79555?family=Graphik+Web+Regular+Regular);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Graphik Web Regular Regular";
+  font-size: 1rem;
+  font-weight:bold;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+ul {
+  list-style:none;
+}
+
+.sideBar {
+  width: 20rem;
+  height: 100vh;
+  position: fixed;
+  border-left: 2px solid lightblue;
+  background: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  z-index: 3;
+}
+
+.sideBarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+.userSolutionCard {
+  width: 100%;
+  height: auto;
+  background: #f3f3f3;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.userSolutionCard .solutionData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userSolutionCard a {
+  width: fit-content;
+}
+
+.userSolutionCard ul li, button {
+  font-size: 0.75rem;
+  font-weight: 100;
+}
+
+.userSolutionCard ul{
+  padding: 0.75rem 0 0.75rem 0;
+}
+
+.sidebarClose {
+  width: calc(100% + 2rem);
+  border-bottom: 2px solid lightblue;
+}
+
+.sidebarClose button {
+  padding: 1rem;
+  border: none;
+  font-size: 1rem;
+  background: white;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-gap: 1px;
+}
+
+.gridItem {
+  padding: 10px;
+}
+
+.gridGame {
+  outline: 1px solid rgb(203 213 225);
+  font-size: 2rem;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  0% {
+      background: white;
+  }
+  50% {
+      background: rgba(255,192,74,0.97);
+  }
+  100% {
+      background: lightblue;
+  }
+}
+
+@keyframes messageBlink {
+  0% {
+    opacity : 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes solutionBlink {
+  0% {
+    background: white;
+    -webkit-box-shadow: 1px 1px 50px 23px rgba(255,192,74,0.97); 
+    box-shadow: 1px 1px 50px 23px rgba(255,192,74,0.97);
+    opacity : 0;
+  }
+  50% {
+    background: rgba(255,192,74,0.97);
+    -webkit-box-shadow: 1px 1px 50px 23px rgba(255,192,74,0.97); 
+    box-shadow: 1px 1px 50px 23px rgba(255,192,74,0.97);
+    opacity: 1;
+  }
+  100% {
+    background: rgba(255,192,74,0.97);
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(255,192,74,0.97); 
+    box-shadow: 0px 0px 0px 0px rgba(255,192,74,0.97);
+    opacity: 1;
+  }
+}
+
+.gameBlock  {
+  background: lightblue;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  animation-duration: 1s;
+  animation-name: fadeIn;
+  font-size: 2rem;
+  border: none;
+}
+
+.gameBlock:focus {
+  background: rgba(255,192,74,0.97);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+ul {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.solution-card-digit {
+  background: lightgrey;
+  border-radius: 3px;
+  width: 10%;
+  font-size: 2rem;
+}
+
+.selected {
+  outline: 1px solid rgba(255,192,74,0.97);
+}
+
+.valid {
+  background: rgba(255,192,74,0.97);
+  animation-duration: 2s;
+  animation-name: solutionBlink;
+}
+
+nav {
+  padding: 1rem 0 1rem 0;
+  border-bottom: 2px solid lightblue;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.linksContainer {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.messageArea h3 {
+  width: 80%;
+  height: auto;
+  border-radius: 2rem;
+  margin: auto;
+  text-align: center;
+  animation-duration: 2s;
+  animation-name: messageBlink;
+}
+
+.actionMessage {
+  opacity : 0;
+}
+
+.messageArea div {
+  min-height : 1.5rem;
+}
+
+#popUp {
+  position: absolute;
+  background: white;
+  height: 30vh;
+  width: 30vw;
+  margin-left: 35vw;
+  margin-top: 35vh;
+  border-radius: 0 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  outline: 1px solid rgb(203 213 225);
+  z-index: 5;
+}
+
+#popClose {
+  width: auto;
+  height: 25%;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.fog {
+  width: 100vw;
+  height: 100vh;
+  background: grey;
+  position: absolute;
+  top: 0;
+}
+
+.formButtons {
+  width: 80vw;
+  margin: auto;
+  display: flex;
+  justify-content: left;
+}
+
+.formButtons button:nth-child(2) {
+  margin-left: 1rem;
+}
