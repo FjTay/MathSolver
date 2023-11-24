@@ -8,14 +8,20 @@ export const gameMapping: Record<string, GameMappingItem> = {
 }
   
 export const gridItems: number[] = Array.from({ length: 72 }, (_, index) => index + 1)
-  
+
 export type Solution = {
+  id: number | null
+  permutation: number[]
+  isValid: boolean
+}
+
+export type CurrentSolution = {
   currentID: number | null
   currentPermutations: (number | null)[]
   isValid: boolean
 }
   
-export const solution: Solution = {
+export const solution: CurrentSolution = {
   currentID: null,
   currentPermutations: Array.from({ length: 9 }, () => null),
   isValid: false,

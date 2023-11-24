@@ -14,21 +14,19 @@ const UserSolutions = ({ sidebar }) => {
     return (
         <>
             <SideBarClose />
-                    <>
-                        {sidebar !== "allSolutions" && <button onClick={() => handleSolutionContext({currentID : null})}>Unselect solutions</button>}
-                        <AnimatePresence>
-                        {solutions?.map((solution, index) =>
-                            <SolutionCard
-                                handleSolutionContext={handleSolutionContext}
-                                index={index}
-                                key={`userSolutionCard-${solution.id}`}
-                                show={solutions.find(item => solution.id === item.id)}
-                                userSolution={solution}
-                                iscurrentSolutionID={solution.id === currentSolution.currentID}
-                            />
-                        )}
-                        </AnimatePresence>
-                    </>
+            {sidebar !== "allSolutions" && <button onClick={() => handleSolutionContext({currentID : null})}>Unselect solutions</button>}
+            <AnimatePresence>
+            {solutions?.map((solution, index) =>
+                <SolutionCard
+                    handleSolutionContext={handleSolutionContext}
+                    index={index}
+                    key={`userSolutionCard-${solution.id}`}
+                    show={solutions.find(item => solution.id === item.id)}
+                    userSolution={solution}
+                    iscurrentSolutionID={solution.id === currentSolution.currentID}
+                />
+            )}
+            </AnimatePresence>
         </>
     )
 }
