@@ -1,4 +1,4 @@
-import { postNewSolution, putSolution } from "../scripts/solutionHelpers";
+import { postNewSolution, putSolution } from "../scripts/axios";
 
 export async function newSolutionAction(permutation) {
   const newSolution = await postNewSolution(permutation)

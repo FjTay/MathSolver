@@ -1,5 +1,5 @@
 import { getTimeStamp } from "../utils/utils"
-import { getUserSolutions, getSolutions } from "./solutionHelpers"
+import { getUserSolutions, getSolutions } from "./axios"
 
 export async function handleLoaders (params, callBack) {
     if (params.dataType === "userSolutions") {

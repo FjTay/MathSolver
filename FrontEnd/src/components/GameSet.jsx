@@ -3,7 +3,7 @@ import { forwardRef, useContext, useEffect, useImperativeHandle, useRef } from "
 import { SolutionContext } from "../contexts/SolutionContext";
 import { gridItems, gameMapping } from "../utils/gameData";
 import GameBlock from "./GameBlock";
-import { solution as solutionMapping } from "../utils/gameData";
+import { initialContextValue as solutionMapping } from "../contexts/SolutionContext";
 
 const GameSet = forwardRef(({ _ }, ref) => {
 

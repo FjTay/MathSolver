@@ -1,5 +1,5 @@
 import { Form } from "react-router-dom"
-import { solution } from "../utils/gameData"
+import { initialContextValue } from "../contexts/SolutionContext"
 
 interface SolutionCardButtonLineProps {
     id : Number
@@ -15,7 +15,7 @@ const SolutionCardButtonLine : React.FC<SolutionCardButtonLineProps> = ({ id, is
             <Form
                 action={`userSolutions/destroy/${id}`}
                 method="post"
-                onSubmit={() => iscurrentSolutionID && handleSolutionContext({...solution})}
+                onSubmit={() => iscurrentSolutionID && handleSolutionContext({...initialContextValue})}
             >
                 {isUserSolutions && <button type="submit">Delete Solution</button>}
             </Form>

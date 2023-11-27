@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { deleteAction, handleSolutionAction } from './scripts/actions.js';
 import { useContext, useMemo } from 'react';
-import { SolutionContext } from './contexts/SolutionContext.jsx';
+import { SolutionContext } from './contexts/SolutionContext.tsx'
 import { handleLoaders } from './scripts/loaders.js';
 import Game from './pages/Game.jsx';
 import Errorpage from './pages/ErrorPage.jsx';
