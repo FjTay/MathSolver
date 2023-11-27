@@ -8,10 +8,12 @@ const Message : React.FC<MessageProps> = () => {
 
     const {currentSolution : { updatedAt, message, currentID }} = useContext(SolutionContext) as SolutionContextValue
 
-    const x = `You're working on Solution N° ${currentID}`
+    const currentSolution = `You're working on Solution N° ${currentID}`
 
     const text = useMemo(() =>
-        <h3 key={Math.random()}>{x}</h3>
+        <h3 
+            key={Math.random()}
+        >{currentSolution}</h3>
     , [currentID])
 
     const actionMessage = useMemo(() =>
