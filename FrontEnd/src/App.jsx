@@ -6,7 +6,7 @@ import { useContext, useMemo } from 'react';
 import { SolutionContext } from './contexts/SolutionContext.tsx'
 import { handleLoaders } from './scripts/loaders.js';
 import Game from './pages/Game.jsx';
-import Errorpage from './pages/ErrorPage.jsx';
+import Errorpage from './pages/ErrorPage.tsx';
 
 function App() {
 

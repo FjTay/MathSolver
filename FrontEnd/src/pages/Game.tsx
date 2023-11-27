@@ -6,21 +6,23 @@ import { useRef } from "react";
 import Message from "../components/Message";
 import PopUp from "./PopUp";
 
-const Game = () => {
+interface GameProps {}
 
-    const gameSet = useRef(null)
+const Game : React.FC<GameProps> = () => {
+
+    const gameSet : React.RefObject<HTMLFormElement> = useRef(null)
     const location = useLocation()
     const navigation = useNavigation()
-    const isAllSolutions = location.pathname === "/allSolutions/info" ||
+    const isAllSolutions : Boolean = location.pathname === "/allSolutions/info" ||
         navigation?.location?.pathname === "/allSolutions/info"
 
     return (
         <>
             <Header />
             <main>
-                {isAllSolutions && <PopUp />}
+                {isAllSolutions && <PopUp/>}
                 <SidebarManager location={location}/>
-                <Message />
+                <Message/>
                 <Outlet/>
                 <GameSet ref={gameSet}/>
             </main>

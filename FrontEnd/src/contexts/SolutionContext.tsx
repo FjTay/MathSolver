@@ -16,12 +16,12 @@ interface SolutionContext {
     message : Message
     updatedAt : UpdatedAt
     currentPermutations : ValidPermutation
-    id : Id
+    currentID : Id
     isValid : IsValid
 }
-interface SolutionContextValue {
-    currentSolution: SolutionContext;
-    handleSolutionContext: (data: Partial<SolutionContext>) => void;
+export interface SolutionContextValue {
+    currentSolution: SolutionContext
+    handleSolutionContext: (data: Partial<SolutionContext>) => void
 }
 interface SolutionContextProviderProps {
     children: React.ReactNode
@@ -31,7 +31,7 @@ export const initialContextValue: SolutionContext = {
     message: "hello",
     updatedAt: getTimeStamp(),
     currentPermutations: Array.from({ length: 9 }, () => null) as ValidPermutation,
-    id: null,
+    currentID: null,
     isValid: false,
 }
 
