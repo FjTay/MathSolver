@@ -2,8 +2,18 @@ import { useMemo } from "react"
 import { motion } from "framer-motion"
 import SolutionCardButtonLine from "./SolutionCardButtonLine"
 import { useParams } from "react-router-dom"
+import { SolutionContextValue } from "../contexts/SolutionContext"
+import { APISolution } from "../contexts/SolutionContext"
 
-const SolutionCard = (
+interface SolutionCardProps {
+    handleSolutionContext : Function
+    userSolution : APISolution
+    iscurrentSolutionID : Boolean
+    show : Boolean
+    index : Number
+}
+
+const SolutionCard : React.FC<SolutionCardProps>= (
     {
         handleSolutionContext,
         userSolution, 
@@ -12,9 +22,9 @@ const SolutionCard = (
         index
     }) => {
 
-    const { dataType } = useParams()
+    const { dataType } : { dataType : String} = useParams()
     const { id, permutation, isValid } = userSolution
-    const isUserSolutions = dataType === "userSolutions"
+    const isUserSolutions : Boolean = dataType === "userSolutions"
 
     const handleSelect = () => {
         isUserSolutions && 
@@ -26,6 +36,7 @@ const SolutionCard = (
     }
 
     const solutionCard = () => {
+        const solutionNo = `Solution N° ${id}`
         return (
             <>
                 <motion.div
@@ -35,10 +46,10 @@ const SolutionCard = (
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 * (index + 1), ease: "easeIn" }}
+                    transition={{ duration: 0.3 * (Number(index) + 1), ease: "easeIn" }}
                 >
                     <div className="solutionData" onClick={() => handleSelect()}>
-                        {isUserSolutions && <p>Solution N° {id}</p>}
+                        {isUserSolutions && <p>{solutionNo}</p>}
                         <div>
                             <ul>
                                 {permutation.map((digit, i) => <li key={`solution-card-${i}`}>{digit}</li>)}
@@ -48,7 +59,7 @@ const SolutionCard = (
                     <SolutionCardButtonLine
                         handleSolutionContext={handleSolutionContext}
                         iscurrentSolutionID={iscurrentSolutionID}
-                        id={id}
+                        id={id as Number}
                         isUserSolutions={isUserSolutions}
                     />
                 </motion.div>

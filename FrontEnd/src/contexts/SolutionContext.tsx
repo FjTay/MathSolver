@@ -12,11 +12,16 @@ type UpdatedAt = Number
 type Id = String | Number | null
 type IsValid = Boolean
 
-interface SolutionContext {
+export interface SolutionContext {
     message : Message
     updatedAt : UpdatedAt
     currentPermutations : ValidPermutation
     currentID : Id
+    isValid : IsValid
+}
+export interface APISolution {
+    id : Id
+    permutation: ValidPermutation
     isValid : IsValid
 }
 export interface SolutionContextValue {

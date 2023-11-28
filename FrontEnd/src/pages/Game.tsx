@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import { Outlet, useLocation, useNavigation } from "react-router-dom"
 import SidebarManager from "./SidebarManager"
-import GameSet from "../components/GameSet";
+import GameSet from '../components/GameSet'
 import { useRef } from "react";
 import Message from "../components/Message";
 import PopUp from "./PopUp";
@@ -21,7 +21,7 @@ const Game : React.FC<GameProps> = () => {
             <Header />
             <main>
                 {isAllSolutions && <PopUp/>}
-                <SidebarManager location={location}/>
+                <SidebarManager/>
                 <Message/>
                 <Outlet/>
                 <GameSet ref={gameSet}/>

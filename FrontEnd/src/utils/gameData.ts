@@ -1,4 +1,4 @@
-type GameMappingItem = {
+export type GameMappingItem = {
     index?: number
     value?: string
   }

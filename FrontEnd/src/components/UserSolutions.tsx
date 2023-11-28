@@ -4,24 +4,30 @@ import { useContext, useMemo } from "react";
 import SideBarClose from "./SideBarClose";
 import { AnimatePresence } from "framer-motion";
 import { SolutionContext } from "../contexts/SolutionContext";
+import { SolutionContextValue } from "../contexts/SolutionContext";
+import { APISolution } from "../contexts/SolutionContext";
 
-const UserSolutions = ({ sidebar }) => {
+interface UserSolutionsProps {
+    sidebar : string
+}
 
-    const { currentSolution, handleSolutionContext } = useContext(SolutionContext)
+const UserSolutions : React.FC<UserSolutionsProps> = ({ sidebar }) => {
+
+    const { currentSolution, handleSolutionContext } = useContext(SolutionContext) as SolutionContextValue
     const matches = useMatches()
-    const solutions = useMemo(() => matches[1]?.data ?? [],  [matches[1]?.data?.length])
+    const solutions : APISolution[] = useMemo(() => matches[1]?.data ?? [],  [matches[1]?.data?.length])
 
     return (
         <>
             <SideBarClose />
             {sidebar !== "allSolutions" && <button onClick={() => handleSolutionContext({currentID : null})}>Unselect solutions</button>}
             <AnimatePresence>
-                {solutions?.map((solution, index) =>
+                {solutions?.map((solution : APISolution, index :  Number) =>
                     <SolutionCard
                         handleSolutionContext={handleSolutionContext}
                         index={index}
                         key={`userSolutionCard-${solution.id}`}
-                        show={solutions.find(item => solution.id === item.id)}
+                        show={solutions.some((item : APISolution) => solution.id === item.id)}
                         userSolution={solution}
                         iscurrentSolutionID={solution.id === currentSolution.currentID}
                     />
