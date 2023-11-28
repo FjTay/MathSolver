@@ -1,8 +1,10 @@
 import { deleteUserSolution } from "./axios"
 import { newSolutionAction, updateSolutionAction } from "../routes/newSolution"
 import { getTimeStamp } from "../utils/utils"
+import { ParamsObject } from "../types/types"
+import { APISolution, SolutionContext, ValidPermutation } from "../contexts/SolutionContext"
 
-export async function handleSolutionAction (request, params, handleSolutionContext) {
+export async function handleSolutionAction (request : Request, params : ParamsObject, handleSolutionContext : Function) {
     const formData = await request.formData()
     const permutations = Object.fromEntries(formData)
     // Todo :  check what caused why it was necessary to handle this particular case
@@ -14,26 +16,28 @@ export async function handleSolutionAction (request, params, handleSolutionConte
     }
 }
 
-async function handleNewSolution(permutations, action, callBack) {
-    const newSolution = await action(Object.values(permutations))
-    if(newSolution.id) {
-        callBack({
-            message: newSolution.isValid ? 
+async function handleNewSolution(permutations : Object, action : Function, callBack : Function) {
+    const apiSolution : APISolution = await action(Object.values(permutations))
+    if(apiSolution.id) {
+        const newSolution : SolutionContext = {
+            message: apiSolution.isValid ? 
                 "GREAT !"
                 : "Your solution has been added to your list" , 
-            currentID: newSolution.id, 
-            currentPermutations : newSolution.permutation,
-            isValid : newSolution.isValid,
+            currentID: apiSolution.id, 
+            currentPermutations : apiSolution.permutation,
+            isValid : apiSolution.isValid,
             updatedAt: getTimeStamp()
-        })
+        }
+        callBack(newSolution)
     } else {
-        callBack({
+        const contextUpdate : Partial<SolutionContext> = {
             message: "You have already attempted this solution",
             updatedAt: getTimeStamp(),
             currentPermutations: permutations
-        })
+        }
+        callBack(contextUpdate)
     }
-    return newSolution
+    return apiSolution
 }
 
 async function handleUpdateSolution (params, permutations, action, callBack) {

@@ -1,4 +1,4 @@
-import { Form } from 'react-router-dom'
+import { Form } from "react-router-dom";
 import { forwardRef, useContext, useEffect, useImperativeHandle, useRef } from "react";
 import { SolutionContext } from "../contexts/SolutionContext";
 import { gridItems, gameMapping, GameMappingItem } from "../utils/gameData";
@@ -10,7 +10,7 @@ interface GameSetProps {}
 
 const GameSet = forwardRef<HTMLFormElement, GameSetProps>(({}, ref) => {
 
-    const gameSet = useRef<HTMLFormElement | null>(null)
+    const gameSet = useRef<HTMLFormElement>(null)
     const { currentSolution, handleSolutionContext } = useContext(SolutionContext) as SolutionContextValue
 
     useImperativeHandle(ref, () => gameSet.current!)
@@ -29,27 +29,19 @@ const GameSet = forwardRef<HTMLFormElement, GameSetProps>(({}, ref) => {
         gameSet.current?.reset()
     }
 
-    const manageGameBlock = (gameBlock: GameMappingItem, val: string | number, i: number) => {
-        if (gameBlock.value) {
-            return (
-                <div 
-                    key={`gridItem${i}`}
-                    className="gridItem gridGame"
-                >{gameBlock.value}</div>
-            )
-        } else {
-            const permutationValue = gameBlock.index && currentSolution.currentPermutations[gameBlock.index]
-            return (
-                <GameBlock
-                    isValid={currentSolution.isValid}
-                    gameSet={gameSet}
-                    value={permutationValue ?? 0}
-                    key={`gameBlock${val}`}
-                    index={gameBlock.index ?? 0}
-                />
-            )
-        }
-    }
+    const manageGameBlock = (gameBlock : GameMappingItem, val : String | Number, i : Number) => 
+        gameBlock.value ? 
+            <div 
+                key={`gridItem${i}`} 
+                className="gridItem gridGame"
+            >{gameBlock.value}</div>
+            : <GameBlock
+                isValid={currentSolution.isValid}
+                gameSet={gameSet}
+                value={currentSolution.currentPermutations[gameBlock.index as number] as Number} 
+                key={`gameBlock${val}`}
+                index={gameBlock.index as Number}
+            />
 
     return (
         <>

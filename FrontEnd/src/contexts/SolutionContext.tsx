@@ -6,10 +6,10 @@ type NumberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 type PermutationArray<T> = {
     [P in keyof T]: T[P] | null
 }
-type ValidPermutation = PermutationArray<NumberArray>
+export type ValidPermutation = PermutationArray<NumberArray>
 type Message = String
 type UpdatedAt = Number
-type Id = String | Number | null
+export type Id = String | Number | null
 type IsValid = Boolean
 
 export interface SolutionContext {
