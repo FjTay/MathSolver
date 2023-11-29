@@ -6,18 +6,19 @@ import { APISolution, SolutionContext, ValidPermutation } from "../contexts/Solu
 
 export async function handleSolutionAction (request : Request, params : ParamsObject, handleSolutionContext : Function) {
     const formData = await request.formData()
-    const permutations = Object.fromEntries(formData)
+    const data = Object.fromEntries(formData)
+    const permutations = Object.values(data) as unknown
     // Todo :  check what caused why it was necessary to handle this particular case
     // happened after passing the SolutionContext file to Typescript
     if(params.id === "null" || params.id === "undefined") {
-        return handleNewSolution(permutations, newSolutionAction, handleSolutionContext)
+        return handleNewSolution(permutations as ValidPermutation, newSolutionAction, handleSolutionContext)
     } else {
-        return handleUpdateSolution(params, permutations, updateSolutionAction, handleSolutionContext)
+        return handleUpdateSolution(params, permutations as ValidPermutation, updateSolutionAction, handleSolutionContext)
     }
 }
 
-async function handleNewSolution(permutations : Object, action : Function, callBack : Function) {
-    const apiSolution : APISolution = await action(Object.values(permutations))
+async function handleNewSolution(permutations : ValidPermutation, action : Function, callBack : Function) {
+    const apiSolution : APISolution = await action(permutations)
     if(apiSolution.id) {
         const newSolution : SolutionContext = {
             message: apiSolution.isValid ? 
@@ -40,7 +41,7 @@ async function handleNewSolution(permutations : Object, action : Function, callB
     return apiSolution
 }
 
-async function handleUpdateSolution (params, permutations, action, callBack) {
+async function handleUpdateSolution (params : ParamsObject, permutations : ValidPermutation, action : Function, callBack : Function) {
     const updatedSolution = await action(Object.values(permutations), params.id)
     if(updatedSolution.id) {
         callBack({
@@ -60,7 +61,7 @@ async function handleUpdateSolution (params, permutations, action, callBack) {
     return updatedSolution
 }
 
-export async function deleteAction({params : {id}}) {
+export async function deleteAction({params : {id}} : {params : {id : Number}}) {
     await deleteUserSolution(id)
     return null
 }
