@@ -218,8 +218,8 @@ nav a {
   opacity : 0;
 }
 
-.messageArea div {
-  min-height : 1.5rem;
+.messageArea {
+  min-height : 3rem;
 }
 
 #popUp {

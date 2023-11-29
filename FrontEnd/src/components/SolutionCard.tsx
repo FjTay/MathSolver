@@ -2,8 +2,7 @@ import { useMemo } from "react"
 import { motion } from "framer-motion"
 import SolutionCardButtonLine from "./SolutionCardButtonLine"
 import { useParams } from "react-router-dom"
-import { SolutionContextValue } from "../contexts/SolutionContext"
-import { APISolution } from "../contexts/SolutionContext"
+import { APISolution } from "../types/types"
 
 interface SolutionCardProps {
     handleSolutionContext : Function

@@ -4,8 +4,7 @@ import { useContext, useMemo } from "react";
 import SideBarClose from "./SideBarClose";
 import { AnimatePresence } from "framer-motion";
 import { SolutionContext } from "../contexts/SolutionContext";
-import { SolutionContextValue } from "../contexts/SolutionContext";
-import { APISolution } from "../contexts/SolutionContext";
+import { SolutionContextValue, APISolution } from "../types/types";
 
 interface UserSolutionsProps {
     sidebar : string

@@ -1,5 +1,5 @@
 import { postNewSolution, putSolution } from "../scripts/axios";
-import { ValidPermutation, Id } from "../contexts/SolutionContext";
+import { ValidPermutation, Id } from "../types/types";
 
 export async function newSolutionAction(permutation : ValidPermutation) {
   const newSolution = await postNewSolution(permutation)

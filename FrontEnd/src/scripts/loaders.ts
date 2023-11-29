@@ -1,7 +1,7 @@
 import { getTimeStamp } from "../utils/utils"
 import { getUserSolutions, getSolutions } from "./axios"
 import { ParamsObject } from "../types/types"
-import { APISolution, SolutionContext } from "../contexts/SolutionContext"
+import { APISolution, SolutionContext } from "../types/types"
 
 export async function handleLoaders (params : ParamsObject, callBack : Function) {
     if (params.dataType === "userSolutions") {

@@ -1,5 +1,5 @@
 import { Form } from "react-router-dom"
-import { initialContextValue } from "../contexts/SolutionContext"
+import { initialContextValue } from "../types/types"
 
 interface SolutionCardButtonLineProps {
     id : Number

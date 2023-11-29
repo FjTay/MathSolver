@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APISolution, ValidPermutation, Id } from "../contexts/SolutionContext";
+import { APISolution, ValidPermutation, Id } from "../types/types";
 
 export async function getSolutions() {
   try {

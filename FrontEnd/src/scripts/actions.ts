@@ -2,7 +2,7 @@ import { deleteUserSolution } from "./axios"
 import { newSolutionAction, updateSolutionAction } from "../routes/newSolution"
 import { getTimeStamp } from "../utils/utils"
 import { ParamsObject } from "../types/types"
-import { APISolution, SolutionContext, ValidPermutation } from "../contexts/SolutionContext"
+import { APISolution, SolutionContext, ValidPermutation } from "../types/types"
 
 export async function handleSolutionAction (request : Request, params : ParamsObject, handleSolutionContext : Function) {
     const formData = await request.formData()

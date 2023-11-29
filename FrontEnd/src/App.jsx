@@ -1,10 +1,10 @@
 import './App.css'
 import { Outlet } from 'react-router-dom';
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
-import { deleteAction, handleSolutionAction } from './scripts/actions.js';
+import { deleteAction, handleSolutionAction } from './scripts/actions';
 import { useContext, useMemo } from 'react';
 import { SolutionContext } from './contexts/SolutionContext.tsx'
-import { handleLoaders } from './scripts/loaders.ts/index.ts';
+import { handleLoaders } from './scripts/loaders.ts';
 import Game from './pages/Game.tsx';
 import Errorpage from './pages/ErrorPage.tsx';
 

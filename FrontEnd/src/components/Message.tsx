@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react"
 import { SolutionContext } from "../contexts/SolutionContext"
-import { SolutionContextValue } from "../contexts/SolutionContext"
+import { SolutionContextValue } from "../types/types"
 
 interface MessageProps {}
 

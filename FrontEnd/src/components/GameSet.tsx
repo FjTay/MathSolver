@@ -3,8 +3,7 @@ import { forwardRef, useContext, useEffect, useImperativeHandle, useRef } from "
 import { SolutionContext } from "../contexts/SolutionContext";
 import { gridItems, gameMapping, GameMappingItem } from "../utils/gameData";
 import GameBlock from "./GameBlock";
-import { initialContextValue as solutionMapping } from "../contexts/SolutionContext";
-import { SolutionContextValue } from "../contexts/SolutionContext";
+import { initialContextValue as solutionMapping, SolutionContextValue, SolutionContext as SolutionContextType } from "../types/types"
 
 interface GameSetProps {}
 
@@ -20,8 +19,8 @@ const GameSet = forwardRef<HTMLFormElement, GameSetProps>(({}, ref) => {
     }, [currentSolution.currentID])
 
     const reset = () => {
-        const currentPermutationsKey : keyof SolutionContext = "currentPermutations"
-        const isValidKey : keyof SolutionContext = "isValid"
+        const currentPermutationsKey : keyof SolutionContextType = "currentPermutations"
+        const isValidKey : keyof SolutionContextType = "isValid"
         handleSolutionContext({
             [currentPermutationsKey] : solutionMapping.currentPermutations,
             [isValidKey]: false
