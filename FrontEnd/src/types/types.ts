@@ -1,3 +1,4 @@
 export interface ParamsObject {
-    id : Number | String
+    id? : Number | String
+    dataType? : String
 }

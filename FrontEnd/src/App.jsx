@@ -4,7 +4,7 @@ import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { deleteAction, handleSolutionAction } from './scripts/actions.js';
 import { useContext, useMemo } from 'react';
 import { SolutionContext } from './contexts/SolutionContext.tsx'
-import { handleLoaders } from './scripts/loaders.js';
+import { handleLoaders } from './scripts/loaders.ts/index.ts';
 import Game from './pages/Game.tsx';
 import Errorpage from './pages/ErrorPage.tsx';
 

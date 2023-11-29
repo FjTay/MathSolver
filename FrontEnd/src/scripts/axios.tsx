@@ -4,7 +4,7 @@ import { APISolution, ValidPermutation, Id } from "../contexts/SolutionContext";
 export async function getSolutions() {
   try {
     const response = await axios.get('http://localhost:8080/api/solutions/results')
-    const solutions = response.data.map((solution : APISolution, i : Number) => ({...solution, id: `working-${i}`}))
+    const solutions : APISolution[] = response.data.map((solution : APISolution, i : Number) => ({...solution, id: `working-${i}`}))
     return solutions
   } catch (error) {
     return error
@@ -14,9 +14,11 @@ export async function getSolutions() {
 export async function getUserSolutions() {
   try {
     const response = await axios.get('http://localhost:8080/api/solutions')
-    return response.data
+    const data : APISolution[] = response.data
+    return data
   } catch (error) {
-    return error
+    console.error(error)
+    return []
   }
 }
 
